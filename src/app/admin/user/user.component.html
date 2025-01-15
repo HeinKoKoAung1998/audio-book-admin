@@ -1,0 +1,34 @@
+<div class="row mt-3">
+    <div class="col-12">
+
+        <div class="card">
+            <div class="card-body">
+                <h1 class="fs-5 p-3"><strong>Active Users</strong></h1>
+                <!-- <div class="divider"></div> -->
+                 <hr>
+                <table class="table table-sm ">
+                 
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User Name</th>
+                        <th scope="col">Email Address</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of users">
+                        <th scope="row">{{user.user_id}}</th>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>
+                            <button class="btn btn-sm btn-danger" (click)="deleteUserById(user.user_id)">delete</button>
+                        </td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</div>

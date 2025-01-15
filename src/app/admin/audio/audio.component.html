@@ -1,0 +1,69 @@
+<!-- <div class="container text-center">
+    <div class="card">
+        <img src={{bookData.cover_image_url}} alt={{bookData.cover_image_url}}>
+    </div>
+    <h5>{{bookData.title}}</h5>
+    <p>{{bookData.author}}</p>
+</div>
+
+
+
+<section>
+    <span><h5>Chapter</h5><button class="btn btn-primary text-end" routerLink="/admin/add-audio/{{id}}">Add Audio</button></span>
+   <div class="list-group" *ngFor="let audio of audioList" >
+    <div class="list-group-item">
+         <span><strong>{{audio.title}}</strong><button routerLink="/admin/edit-audio/{{audio.audio_id}}">Edit</button></span>
+    </div>
+   </div>
+
+</section> -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card m-2">
+                <div class="card-body text-center px-5" >
+                    <img src={{bookData.cover_image_url}} alt="" class="float-start img-fluid mx-5" style="height: 150px;">
+                    <h5 class="float-start me-5">{{bookData.title}}</h5>
+                    <p class="float-start">{{bookData.author}}</p>
+
+                    <button class="btn btn-sm btn-primary float-end" routerLink="/admin/add-audio/{{id}}">Add Audios</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mx-2 p-5">
+                <div class="card-body">
+
+                    <table class="table row-border hover">
+                        <thead class="text-center">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Youtube Url</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr *ngFor="let audio of audioList">
+                                <th>{{audio.audio_id}}</th>
+                                <td>{{audio.title}}</td>
+                                <td>{{audio.youtube_url}}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning me-2"
+                                        routerLink="/admin/edit-audio/{{audio.audio_id}}">Edit</button>
+                                    <button class="btn btn-sm btn-danger me-2">Delete</button>
+                                    <button class="btn btn-sm btn-info">Open</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
