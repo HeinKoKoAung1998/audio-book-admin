@@ -11,17 +11,14 @@ import { Observable } from 'rxjs';
 
 export class authGuard{
 
-  
-
-  constructor(private cookieService: CookieService, private router: Router,public userService: UserService) { }
-
-
+  constructor(private cookieService: CookieService, private router: Router,public userService: UserService) { 
+  }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | UrlTree | boolean{
-    if(this.cookieService.get('access_token'))
+    if(this.cookieService.get('token') && this.cookieService.get('role') == 'Admin')
       return true;
     else
       this.router.navigate(['login'])

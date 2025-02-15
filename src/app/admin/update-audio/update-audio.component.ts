@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs';
 import { AudioService } from 'src/app/services/audio.service';
 import { BookService } from 'src/app/services/book.service';
@@ -26,7 +27,7 @@ export class UpdateAudioComponent implements OnInit {
   loading! : boolean;
 
 
-  constructor(private audioService: AudioService, private bookService: BookService, private formBuilder: FormBuilder, private http: HttpClient,private route: ActivatedRoute) { };
+  constructor(private audioService: AudioService, private bookService: BookService, private formBuilder: FormBuilder, private http: HttpClient,private route: ActivatedRoute,private router: Router,private toastr: ToastrService) { };
 
 
   ngOnInit(): void {
@@ -58,18 +59,7 @@ export class UpdateAudioComponent implements OnInit {
   
     console.log(this.updateAudioForm.value);
     this.getAllBooks();
-    
-    // console.log(this.getAudiobyId());
-    
-  //   if(!this.isAddMode){
-  //     this.audioService.getAudioById(this.audioId)
-  //     .pipe(first())
-  //     .subscribe( x => this.updateAudioForm.patchValue(x));
-  // }
-
   }
-
-
 
   get f(){return this.updateAudioForm.controls };
 
@@ -85,7 +75,7 @@ export class UpdateAudioComponent implements OnInit {
     if( this.isAddMode){
       this.addAudio();
     }else{
-      this.updateAudioForm();
+      this.updateAudio();
     }
    
   };
@@ -93,10 +83,11 @@ export class UpdateAudioComponent implements OnInit {
   addAudio(){
     this.audioService.addAudioFile(this.updateAudioForm.value).subscribe((audio) => {
       console.log(audio);
-      alert('Audio File is added Successfully!');
+      this.toastr.success('Audio File is added Successfully!');
+      // this.router.navigate(['/admin/audio'])
     },
       (error) => {
-        alert(error?.error);
+        this.toastr.error(error?.error);
         console.log('Adding error', error);
       }
     )
@@ -105,11 +96,11 @@ export class UpdateAudioComponent implements OnInit {
   updateAudio(){
      this.audioService.updateAudioById(this.audioId,this.updateAudioForm.value).subscribe(
       (res)=>{
-        alert("Student Updated Successfully!");
-        
+        this.toastr.success("Audio File is Updated Successfully!");
+        // this.router.navigate(['/admin/audio']);
       },
       (error)=>{
-        alert(error?.error);
+        this.toastr.success(error?.error)
         console.log('Updating error',error);
       }
      )

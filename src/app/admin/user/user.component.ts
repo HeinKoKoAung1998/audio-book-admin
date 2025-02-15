@@ -6,25 +6,34 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit{
-   constructor(private userService: UserService){ }
+export class UserComponent implements OnInit {
+  constructor(private userService: UserService) {}
 
-   users: any ;
-   
-   ngOnInit(): void {
-     this.getAllUsers();
-   }
+  activeUsers: any = [];
+  activeUsersInfoList: any = [];
 
-   getAllUsers(){
-    this.userService.getAllUsers().subscribe((users: any)=>{
-      this.users = users;
-    })
-   };
+  ngOnInit(): void {
+    this.getAllActiveUsers();
+  }
 
-   deleteUserById(id: any){
-    this.userService.deleteUserById(id).subscribe((res: any)=>{
-      console.log(res);
+  getAllActiveUsers() {
+    this.userService.getActiveUsers().subscribe((res: any) => {
+      this.activeUsers = res;
+      console.log('Active Users:', this.activeUsers);
+      this.getActiveUsersInfo(); // Call getActiveUsersInfo after activeUsers is populated
     });
-   }
+  }
 
+  getActiveUsersInfo(){
+    if (this.activeUsers && this.activeUsers.length > 0) {
+      this.activeUsers.forEach((user: any) => {
+        const userId = user.user_id; 
+        this.userService.getUserById(userId).subscribe((res: any) => {
+          this.activeUsersInfoList = [ ...this.activeUsersInfoList, ...res];
+          console.log('Active Users Info List:', this.activeUsersInfoList);
+        });
+      });
+    }
+    
+  }
 }

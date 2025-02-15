@@ -1,47 +1,56 @@
-<div  class="card m-2 p-3" style="min-height: 400px;">
+<div class="card m-2 p-4" style="min-height: 400px;">
 
-    <!-- <h4 *ngIf="isAddMode">Add Student Form</h4> -->
-    <!-- <h4 *ngIf="!isAddMode">Edit Student Form</h4> -->
-    <form [formGroup]="updateAudioForm" (ngSubmit)="onSubmit()">
+  <h4 *ngIf="isAddMode">Add Audio Form</h4>
+  <h4 *ngIf="!isAddMode">Edit Audio Form</h4>
+  <form [formGroup]="updateAudioForm" (ngSubmit)="onSubmit()">
 
-     <div class="row mt-3">
-        <div class="col-md-2"><label for="book_id" class="form-label">Book</label></div>
-        <div class="col-md-8">
-            <select name="book_id" id="book_id" formControlName="book_id" class="form-select" >
-                <option  *ngFor="let book of bookList" [value]="book.book_id" >{{book.title}}</option>
-            </select>
+    <div class="row mt-4">
+      <div class="col-md-2"><label for="book_id" class="form-label">Book</label></div>
+      <div class="col-md-8">
+        <select name="book_id" id="book_id" formControlName="book_id" class="form-select">
+          <option *ngFor="let book of bookList" [value]="book.book_id">{{book.title}}</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="row mt-3">
+      <div class="col-md-2"> <label for="title">Audio Title</label></div>
+      <div class="col-md-8"> <input type="text" name="title" class="form-control" formControlName="title"
+          [ngClass]="{'is-invalid': submitted && f.title.errors}" required>
+        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+          <div *ngIf="f.title.errors.required">Title is required</div>
         </div>
-     </div>
-
-
-      <div class="row mt-3">
-        <div class="col-md-2"> <label for="title">Title</label></div>
-        <div class="col-md-8"> <input type="text" name="title"  class="form-control" formControlName="title" 
-          [ngClass]="{'is-invalid': submitted && f.title.errors}"
-            required>
-            <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-              <div *ngIf="f.title.errors.required">Title is required</div>
-            </div>
-          </div>
-      
       </div>
 
-    
-      <div class="row mt-3">
-        <div class="col-md-2"> <label for="youtube_url">Youtube Url</label></div>
-        <div class="col-md-8"> <input type="text" name="youtube_url"  class="form-control" formControlName="youtube_url" 
-          [ngClass]="{'is-invalid': submitted && f.youtube_url.errors}"
-            required>
-            <div *ngIf="submitted && f.youtube_url.errors" class="invalid-feedback">
-              <div *ngIf="f.youtube_url.errors.required">Youtube Url is required</div>
-            </div>
-          </div>
-      
+    </div>
+
+
+    <div class="row mt-3 mb-5">
+      <div class="col-md-2"> <label for="youtube_url">Youtube Url</label></div>
+      <div class="col-md-8"> <input type="text" name="youtube_url" class="form-control" formControlName="youtube_url"
+          [ngClass]="{'is-invalid': submitted && f.youtube_url.errors}" required>
+        <div *ngIf="submitted && f.youtube_url.errors" class="invalid-feedback">
+          <div *ngIf="f.youtube_url.errors.required">Youtube Url is required</div>
+        </div>
       </div>
 
-     
-      <div class="col-md-8"> <button type="submit" class="btn btn-primary" >Save</button></div>
-  
-    </form>
-  
-  </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="d-flex justify-content-end"> <button type="submit" class=" btn btn-primary px-5"
+            [disabled]="updateAudioForm.invalid"> <i class="fa-solid fa-floppy-disk me-2"></i>Save</button>
+          <button class="btn btn-secondary px-3 ms-3" routerLink="/admin/dashboard"> Back </button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </form>
+
+</div>

@@ -1,34 +1,54 @@
-<div class="row mt-3">
-    <div class="col-12">
 
-        <div class="card">
-            <div class="card-body">
-                <h1 class="fs-5 p-3"><strong>Active Users</strong></h1>
-                <!-- <div class="divider"></div> -->
-                 <hr>
-                <table class="table table-sm ">
-                 
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">User Name</th>
-                        <th scope="col">Email Address</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let user of users">
-                        <th scope="row">{{user.user_id}}</th>
-                        <td>{{user.name}}</td>
-                        <td>{{user.email}}</td>
-                        <td>
-                            <button class="btn btn-sm btn-danger" (click)="deleteUserById(user.user_id)">delete</button>
-                        </td>
-                      </tr>
-                    
-                    </tbody>
-                  </table>
-            </div>
+
+<div class="row mt-3">
+  <div class="col-12">
+    <div class="card shadow-sm" style="min-height: 350px;">
+      <div class="card-body">
+        <!-- Card Header with Matric Data -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h1 class="fs-5 fw-bold mb-0 text-secondary">Active Users</h1>
+          <div class="badge shadow px-3 ">
+            <span class="text-secondary me-3">Total Active Users</span>
+            
+            <span class="badge bg-success ">{{ activeUsers.length }}</span>
+          </div>
+          
         </div>
+
+        <!-- Divider -->
+        <hr class="mt-2 mb-4">
+
+        <div *ngIf="!activeUsersInfoList.length">
+          <p class="text-center text-secondary"> There is no active users ...</p>
+        </div>
+       
+
+        <!-- Responsive Table -->
+         <div *ngIf="activeUsersInfoList.length">
+        <div class="table-responsive">
+          <table class="table table-sm table-hover">
+            <thead class="table-light">
+              <tr>
+                
+                <th scope="col">User Name</th>
+                <th scope="col">Email Address</th>
+                <th scope="col">Provider</th>
+                <th scope="col">Active</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of activeUsersInfoList">
+              
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{user.auth_provider}}</td>
+                <td><i class="fas fa-circle text-success" style="font-size: 10px;" ></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+         </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -1,0 +1,8 @@
+.btn-sm {
+    transition: all 0.3s ease; /* Smooth transition */
+  }
+  
+  .btn-sm:hover {
+ 
+    transform: translateY(-2px); /* Move button up slightly on hover */
+  }

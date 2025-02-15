@@ -1,0 +1,29 @@
+/* Custom CSS for Card */
+.card {
+    border: none; /* Remove default border */
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  /* Custom CSS for Table */
+  .table-hover tbody tr:hover {
+    background-color: #f8f9fa; /* Light background on hover */
+  }
+  
+  /* Custom CSS for Badge */
+  .badge {
+    font-size: 0.9rem; /* Adjust badge font size */
+    padding: 0.5rem 1rem; /* Add padding to badge */
+  }
+  
+  /* Custom CSS for Delete Button */
+  .btn-danger {
+    transition: all 0.3s ease; /* Smooth transition */
+  }
+  
+  .btn-danger:hover {
+    background-color: #dc3545; /* Darker shade on hover */
+    transform: translateY(-2px); /* Move button up slightly on hover */
+  }
+
+  
+

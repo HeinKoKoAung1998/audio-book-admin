@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.btn-sm {
+    transition: all 0.3s ease; /* Smooth transition */
+  }
+  
+  .btn-sm:hover {
+ 
+    transform: translateY(-2px); /* Move button up slightly on hover */
+  }

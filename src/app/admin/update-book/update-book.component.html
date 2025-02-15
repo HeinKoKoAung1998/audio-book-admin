@@ -1,9 +1,9 @@
-<div class="card m-2 p-3" style="min-height: 400px;">
+<div class="card m-2 p-4" style="min-height: 400px;">
 
-    <!-- <h4 *ngIf="isAddMode">Add Student Form</h4> -->
-    <!-- <h4 *ngIf="!isAddMode">Edit Student Form</h4> -->
+    <h4 *ngIf="isAddMode">Add Book Form</h4>
+    <h4 *ngIf="!isAddMode">Edit Book Form</h4>
     <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()">
-      <div class="row mt-3">
+      <div class="row mt-4">
         <div class="col-md-2"> <label for="title">Title</label></div>
         <div class="col-md-8"> <input type="text" name="title"  class="form-control" formControlName="title" 
           [ngClass]="{'is-invalid': submitted && f.title.errors}"
@@ -29,9 +29,9 @@
 
       <div class="row mt-3">
         <div class="col-md-2"> <label for="title">Description</label></div>
-        <div class="col-md-8"> <input type="text" name="description"  class="form-control" formControlName="description" 
+        <div class="col-md-8"> <textarea name="description"  class="form-control" formControlName="description" 
           [ngClass]="{'is-invalid': submitted && f.description.errors}"
-            >
+            ></textarea>
             <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
               <div *ngIf="f.description.errors.required">Description is required</div>
             </div>
@@ -39,24 +39,15 @@
       
       </div>
 
-      <!-- <div class="row mt-3">
-        <div class="col-md-2"> <label for="title">Book Cover</label></div>
-        <div class="col-md-8"> <input type="file"  accept="image/*" (change)="onFileSelected($event)" name="cover_image_url"  class="form-control" formControlName="cover_image_url" 
-          [ngClass]="{'is-invalid': submitted && f.cover_image_url.errors}"
-            >
-            <div *ngIf="submitted && f.cover_image_url.errors" class="invalid-feedback">
-              <div *ngIf="f.cover_image_url.errors.required">Name is required</div>
-            </div>
-          </div>
-        
-      </div> -->
+    
       <div class="row mt-3">
          <div class="col-md-2"><label for="">Book Cover</label></div>
 
         <div class="col-md-4"><input type="file" class="form-control" accept="image/*" (change)="showPreview($event)" formControlName="cover_image_url" ></div>
-        <div class="col-md-4"><img [src]="imgSrc" alt="" class="form-control img-fluid img-preview" ></div>
+        <div class="col-md-4"><img style="height: 250px;" [src]="imgSrc" alt="book cover" class="form-control img-fluid img-preview" ></div>
       </div>
-       <button type="submit" class="btn btn-primary px-4" [disabled]="addBookForm.invalid">Save</button>
+       <button type="submit" class="btn btn-primary px-5" [disabled]="addBookForm.invalid"><i class="fa-solid fa-floppy-disk me-2"></i>Save</button>
+       <button  class="btn btn-secondary px-3 ms-3" routerLink="/admin/dashboard"> Back </button>
   
     </form>
   

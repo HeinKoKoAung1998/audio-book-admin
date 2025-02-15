@@ -1,6 +1,14 @@
 .list-group-item {
 
-    border: none;
+    /* border: none; */
     
 };
 
+.list-group-item {
+    transition: background-color 0.3s, transform 0.2s;
+}
+.list-group-item:hover {
+    
+    
+    transform: translateX(5px);
+}

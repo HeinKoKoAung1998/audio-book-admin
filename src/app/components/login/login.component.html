@@ -1,47 +1,61 @@
 <!-- Login 13 - Bootstrap Brain Component -->
 <section class="bg-light py-3 py-md-5">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-          <div class="card border border-light-subtle rounded-3 shadow-sm">
-            <div class="card-body p-3 p-md-4 p-xl-5">
-              
-              <h2 class="fs-9  text-center text-secondary mb-5"><strong>Sign in to your account</strong></h2>
-              <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
-                <div class="row gy-2 overflow-hidden">
-                  <div class="col-12">
-                    <div class="form-floating mb-3">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" formControlName="email" required>
-                      <label for="email" class="form-label-lg "><span><i class="fa-solid fa-envelope mx-2"></i></span> Email Address</label>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+        <div class="card border border-light-subtle rounded-3 shadow-sm">
+          <div class="card-body p-3 p-md-4 p-xl-5">
+
+            <h2 class="fs-4 text-center mb-5"><strong>Sign in to Admin Account</strong></h2>
+           
+            <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+              <div class="row gy-2 overflow-hidden">
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com"
+                      formControlName="email" [ngClass]="{'is-invalid': submitted && f.email.errors }" required>
+                    <label for="email" class="form-label-lg "><span><i class="fa-solid fa-envelope mx-2"></i></span>
+                      Email Address</label>
+                    <div *ngIf="submitted&& f.email.errors" class="invalid-feedback">
+                      <div *ngIf="f.email.errors.required">Email is required
+                      </div>
                     </div>
                   </div>
-                  <div class="col-12">
-                    <div class="form-floating mb-3">
-                      <input type="password" class="form-control" name="password" id="password" value="" placeholder="Password" formControlName="password" required>
-                      <label for="password" class="form-label"><span><i class="fa-solid fa-lock mx-2"></i></span>Password</label>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                   
-                  </div>
-                  <div class="col-12">
-                    <div class="d-grid my-3">
-                      <button class="btn btn-dark btn-lg" type="submit">Log in<span><i class="fa-solid fa-right-to-bracket mx-3"></i></span></button>
-                    </div>
-                  </div>
-                  <div class="d-flex gap-2 justify-content-between">
-                    <div class="form-check">
-                      
-                     
-                    </div>
-                    <a href="forgot-password" class="link-primary text-decoration-none">Forgot password?</a>
-                  </div>
-                 
                 </div>
-              </form>
-            </div>
+                <div class="col-12">
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" name="password" id="password" value=""
+                      placeholder="Password" formControlName="password" [ngClass]="{'is-invalid': submitted && f.password.errors}" required>
+                    <label for="password" class="form-label"><span><i
+                          class="fa-solid fa-lock mx-2"></i></span>Password</label>
+                          <div *ngIf="submitted&& f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required
+                            </div>
+                          </div>
+                  </div>
+                </div>
+                <div class="col-12">
+
+                </div>
+                <div class="col-12">
+                  <div class="d-grid my-3">
+                    <button class="btn btn-dark btn-lg" type="submit">Log in<span><i
+                          class="fa-solid fa-right-to-bracket mx-3"></i></span></button>
+                  </div>
+                </div>
+                <div class="d-flex gap-2 justify-content-between">
+                  <div class="form-check">
+
+
+                  </div>
+                  <a href="forgot-password" class="link-primary text-decoration-none">Forgot password?</a>
+                </div>
+
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

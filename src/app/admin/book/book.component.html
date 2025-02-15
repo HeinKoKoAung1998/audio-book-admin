@@ -1,72 +1,76 @@
-<!-- <div class="container-fluid">
-    <span><h5><strong>All Books</strong></h5><button class="btn btn-primary text-end" routerLink="/admin/update-book">Add Book</button></span>
-    <div *ngFor="let book of bookList">
-        <div class="card" routerLink="/admin/audio-of-book/{{book.book_id}}">
-        <div class="row" >
-            <div class="col-4">
-                <div class="card p-0 d-flex d-center">
-                    <img src={{book.cover_image_url}} alt={{book.cover_image_url}}>
-                </div>
-            </div>
-            <div class="col-8  p-5">
-                <h5>{{book.title}}</h5>
-                <p>{{book.author}}</p>
-            </div>
-        </div>
-        </div>
-        
-    </div>
-   
-
-</div> -->
-
-<div class="row">
-  <div class="col-md-12">
-      <div class="card m-2">
-          <div class="card-body text-center">
-              <h3 class="text-center">All Books</h3>
-              <p>From here you can manage your books.</p>
-
-              <button class="btn btn-info bg-theme" routerLink="/admin/update-book">Add New Books</button>
-              <!-- <button class="btn btn-warning ml-2" routerLink="/">Back to Dashboard</button> -->
-          </div>
-      </div>
+<!-- <input type="text" class="form-control mb-3" placeholder="Search users..." [(ngModel)]="searchQuery" (input)="searchBooks()"> -->
+<div class="row m-2 mb-0">
+  <div class="col-12">
+    
+    <input
+      type="text"
+      class="form-control"
+      placeholder= " Search books..."
+      [(ngModel)]="searchQuery"
+      (input)="searchBooks()"
+    />
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="card mx-2 p-2">
-      <div class="card-body">
+  <div class="container-fluid">
+    <!-- Header Card -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card m-2 shadow-sm border-0">
+          <div class="card-body p-4">
+            <!-- Title and Description -->
+            <div class="text-center ">
+              <h3 class="card-title fw-bold">All Books</h3>
+              <p class="card-text text-muted">From here you can manage your books.</p>
+              <button class="btn btn-primary mt-2" routerLink="/admin/add-book">
+                <i class="fa-solid fa-circle-plus me-1"></i> Add New Books
+              </button>
+            </div>
   
-          <table class="table table-hover" >
-              <thead class="text-center">
+    
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!bookList.length">
+      <p class="text-center text-secondary">There is no book ....</p>
+    </div>
+  
+  <!-- Book List Table -->
+   <div *ngIf="bookList.length">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card m-2 mt-0 shadow-sm" style="min-height: 350;">
+        <div class="card-body ">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead class="table-light ">
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Book Cover</th>
+                  <th scope="col" class="text-center">Book Cover</th>
                   <th scope="col">Title</th>
                   <th scope="col">Author</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
-              
-              <tbody class="text-center">
-                <tr *ngFor="let book of bookList" routerLink="/admin/audio-of-book/{{book.book_id}}">
-                  <th [width]="20">{{book.book_id}}</th>
-                  <td [width]="200" ><img src={{book.cover_image_url}} alt={{book.cover_image_url}} class="img img-fluid"></td>
-                  <td [width]="200">{{book.title}}</td>
-                  <td [width]="200">{{book.author}}</td>
+              <tbody >
+                <tr *ngFor="let book of bookList"  class="cursor-pointer">
+                  <td class="text-center">
+                    <img routerLink="/admin/audio-of-book/{{book.book_id}}" [src]="book.cover_image_url" [alt]="book.title" class="img-fluid rounded" style="max-width: 100px;">
+                  </td>
+                  <td>{{book.title}}</td>
+                  <td>{{book.author}}</td>
                   <td>
-                    <button class="btn btn-sm btn-warning me-2" routerLink="/admin/update-book/{{book.book_id}}">Edit</button>
-                    <button class="btn btn-sm btn-danger" >Delete</button>
+                    <button class="btn btn-sm btn-warning me-2" routerLink="/admin/update-book/{{book.book_id}}"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteItem(book.book_id)"><i class="fa-solid fa-trash-can"></i></button>
                   </td>
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
-  </div>
+   </div>
 </div>
-
-
-

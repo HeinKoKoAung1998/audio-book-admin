@@ -1,26 +1,36 @@
-<h1 class="h4 py-3 text-center text-primary">
 
+<h1 class="h4 py-3 text-center text-primary">
     <span class="d-none d-lg-inline">
-        <strong routerLink="/admin/home">Audio Book</strong>
+        <strong routerLink="/admin/dashboard">Audio Book</strong>
     </span>
 </h1>
+
 <div class="list-group text-center text-lg-start">
-    
-    <a routerLink="/admin/dashboard" class="list-group-item list-group-item-action " >
+    <a routerLink="/admin/dashboard" class="list-group-item list-group-item-action" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard" routerLinkActive="active">
         <i class="fas fa-home"></i>
         <span class="d-none d-lg-inline p-3">Dashboard</span>
     </a>
-    <a routerLink="/admin/add-book" class="list-group-item list-group-item-action" >
+    <a routerLink="/admin/book" class="list-group-item list-group-item-action" data-bs-toggle="tooltip" data-bs-placement="right" title="Add Books" routerLinkActive="active">
         <i class="fa-solid fa-book"></i>
-        <span class="d-none d-lg-inline p-3">Add Books</span>
-
+        <span class="d-none d-lg-inline p-3">Books</span>
     </a>
-    <a routerLink="/admin/teacher" class="list-group-item list-group-item-action" >
-        <i class="fa-solid fa-person-chalkboard"></i>
-        <span class="d-none d-lg-inline p-3">All Users</span>
+    <a  routerLink="/admin/audio" class="list-group-item list-group-item-action" data-bs-toggle="tooltip" data-bs-placement="right" title="All Users" routerLinkActive="active">
+        <i class="fa-regular fa-circle-play"></i>
+        <span class="d-none d-lg-inline p-3">Audios</span>
     </a>
-    <a routerLink="/admin/course" class="list-group-item list-group-item-action" >
+    <a routerLink="/admin/profile" class="list-group-item list-group-item-action" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile" routerLinkActive="active"> 
         <i class="fa-solid fa-user"></i>
         <span class="d-none d-lg-inline p-3">Profile</span>
+    </a>
+</div>
+
+<div class="list-group text-center text-lg-start mt-5">
+    <a routerLink="/admin/add-book" class="list-group-item list-group-item-action" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile" routerLinkActive="active"> 
+        <i class="fas fa-plus-circle"></i>
+        <span class="d-none d-lg-inline p-3">Add Books</span>
+    </a>
+    <a routerLink="/admin/add-audio" class="list-group-item list-group-item-action" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile" routerLinkActive="active"> 
+        <i class="fas fa-plus-circle"></i>
+        <span class="d-none d-lg-inline p-3">Add Audios</span>
     </a>
 </div>

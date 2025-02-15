@@ -1,0 +1,14 @@
+/* Custom CSS for Table Row Hover Effect */
+.cursor-pointer {
+    cursor: pointer;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f8f9fa; /* Light background on hover */
+  }
+  
+  
+  /* Optional: Add shadow to cards on hover */
+  .card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }

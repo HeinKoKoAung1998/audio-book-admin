@@ -1,0 +1,71 @@
+
+<!-- <input type="text" class="form-control mb-3" placeholder="Search users..." [(ngModel)]="searchQuery" (input)="searchUsers()"> -->
+
+<!-- Search Box -->
+<div class="row m-2 mb-0">
+  <div class="col-12">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search users..."
+      [(ngModel)]="searchQuery"
+      (input)="searchUsers()"
+    />
+  </div>
+</div>
+<div class="row p-3">
+    <div class="col-12">
+      <div class="card shadow-sm" style="min-height: 350px;">
+        <div class="card-body">
+          <!-- Card Header with Matric Data -->
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1 class="fs-5 fw-bold mb-0 text-secondary">All Users</h1>
+            <div class="badge shadow px-3 ">
+              <span class="text-secondary me-3">Total Users</span>
+              
+              <span class="badge bg-primary ">{{ usersList.length }}</span>
+            </div>
+            
+          </div>
+  
+          <!-- Divider -->
+          <hr class="mt-2 mb-4">
+  
+          <div *ngIf="!usersList.length">
+            <p class="text-center text-secondary"> There is no active users ...</p>
+          </div>
+         
+          <!-- Responsive Table -->
+           <div *ngIf="usersList.length">
+          <div class="table-responsive">
+            <table class="table table-sm table-hover">
+              <thead class="table-light">
+                <tr>
+                  
+                  <th scope="col">User Name</th>
+                  <th scope="col">Email Address</th>
+                  <th scope="col">Provider</th>
+                  <th scope="col" class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of usersList">
+                
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{user.auth_provider}}</td>
+                  <td class="text-center">
+                    <button class="btn btn-sm btn-info me-2" (click)="updateRole(user.user_id)">update role</button>
+                    <button class="btn btn-sm btn-danger me-2" (click)="deleteItem(user.user_id)"><i class="fa-solid fa-trash-can"></i></button>
+               
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+           </div>
+        </div>
+
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,77 @@
+<!-- 
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-sm ">
+          <div class="card-header bg-primary text-white">
+            <h4 class="card-title mb-0">Admin Profile</h4>
+          </div>
+          <div class="card-body my-3">
+            <div class="row align-items-center">
+              
+              <div class="col-md-4 text-center">
+                <img
+                  src="/assets/dummy-user.png"
+                  alt="User Image"
+                  class="img-fluid rounded-circle mb-3"
+                  style="width: 150px; height: 150px; object-fit: cover;"
+                />
+                
+              </div>
+  
+            
+              <div class="col-md-8">
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <p class="mb-1 text-muted">name</p>
+                    <p class="mb-1 text-muted">email</p>
+                    <p class="mb-1 text-muted">role</p>
+                  </div>
+                  <div class="col-md-8">
+                    <p class="mb-1"><strong>{{ userInfo.name }}</strong></p>
+                    <p class="mb-1"><strong>{{ userInfo.email }}</strong></p>
+                    <p class="mb-1"><strong>{{ userInfo.role }}</strong></p>
+                  </div>
+                </div>
+  
+              
+                <div class="row mt-4">
+                  <div class="col-md-12 d-flex gap-2">
+                    <button class="btn btn-primary flex-fill" (click)="onChangePassword()">
+                      <i class="fas fa-key me-2"></i>Change Password
+                    </button>
+                    <button class="btn btn-danger flex-fill" (click)="onDeleteAccount()">
+                      <i class="fas fa-trash me-2"></i>Delete Account
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%; border-radius: 12px;">
+        <div class="card-header text-center mb-3">
+            <h4 class=" mb-0">Admin Profile</h4>
+          </div>
+        <div class="text-center">
+            <img src="/assets/dummy-user.png" alt="User Avatar" class="img-fluid rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover;">
+            <h4 class="mb-1">{{ userInfo.name }}</h4>
+            <p class="text-muted">{{ userInfo.role }}</p>
+        </div>
+        <hr>
+        <div class="mb-3 text-center">
+            <p>email  :<strong class="ms-3">{{userInfo.email}}</strong></p>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-primary w-45" (click)="onChangePassword()"> <i class="fas fa-key me-2"></i>Change Password</button>
+            <!-- <button class="btn btn-danger w-45" (click)="onDeleteAccount()"><i class="fas fa-trash me-2"></i>Delete Account</button> -->
+            <button class="btn btn-warning w-45" (click)="logOut()"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Logout</button>
+        </div>
+    </div>
+</div>

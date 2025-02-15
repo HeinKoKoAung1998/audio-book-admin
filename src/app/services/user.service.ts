@@ -34,25 +34,34 @@ export class UserService {
     this.router.navigate(['/login']);
   };
 
+  getMe() {
+    const headers = this.getHeaders();
+    return this.http.get(`${this.api_url}/get-me`, { headers });
+  }
+
+  getUserById(id: string) {
+    const headers = this.getHeaders();
+    return this.http.get(`${this.api_url}/get/${id}`, { headers });
+  }
+
   getAllUsers() {
     const headers = this.getHeaders();
-    return this.http.get(`${this.api_url}/get-all`, {headers});
+    return this.http.get(`${this.api_url}/get-all`, { headers });
   };
 
-  // getUserById(id: any) {
-  //   const headers = this.getHeaders();
-  //   return this.http.get(`${this.api_url}/get/${id}`, { headers });
-  // };
-
-    updateUserRole(credential: any) {
+  updateUserRole(credential: any ) {
     const headers = this.getHeaders();
-    return this.http.put(`${this.api_url}/update-role`, credential, { headers });
-    };
+    return this.http.patch(`${this.api_url}/update-role`,credential,{ headers });
+  };
 
-    deleteUserById(id: string){
-      const headers = this.getHeaders();
-      return this.http.delete(`${this.api_url}/delete-by-id/${id}`,{headers});
-    }
+  deleteUserById(id: string) {
+    const headers = this.getHeaders();
+    return this.http.delete(`${this.api_url}/delete-by-id/${id}`, { headers });
+  }
 
+  getActiveUsers() {
+    const headers = this.getHeaders();
+    return this.http.get('http://localhost:8080/active/get-all', { headers });
+  };
 
 }
