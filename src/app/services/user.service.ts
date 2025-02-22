@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { Observable } from 'rxjs';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,48 +22,48 @@ export class UserService {
     });
   };
 
-  register(user: any) {
-    return this.http.post(`${this.api_url}/signup`, user);
-  };
 
-  login(credential: any) {
+  login(credential: any) : Observable<any> {
     return this.http.post(`${this.api_url}/login`, credential);
   };
 
-  logout() {
+  logout() : void{
     this.cookieService.delete('email');
     this.cookieService.delete('token');
     this.router.navigate(['/login']);
   };
 
-  getMe() {
+  getMe() : Observable<User> {
     const headers = this.getHeaders();
-    return this.http.get(`${this.api_url}/get-me`, { headers });
+    return this.http.get<User>(`${this.api_url}/get-me`, { headers });
   }
 
-  getUserById(id: string) {
+  getUserById(id: string) : Observable<User> {
     const headers = this.getHeaders();
-    return this.http.get(`${this.api_url}/get/${id}`, { headers });
+    return this.http.get<User>(`${this.api_url}/get/${id}`, { headers });
   }
 
-  getAllUsers() {
+  getAllUsers(): Observable<User[]> {
     const headers = this.getHeaders();
-    return this.http.get(`${this.api_url}/get-all`, { headers });
+    return this.http.get<User[]>(`${this.api_url}/get-all`, { headers });
   };
 
-  updateUserRole(credential: any ) {
+  updateUserRole(credential: any ) : Observable<any> {
     const headers = this.getHeaders();
     return this.http.patch(`${this.api_url}/update-role`,credential,{ headers });
   };
 
-  deleteUserById(id: string) {
+  deleteUserById(id: number): Observable<any> {
     const headers = this.getHeaders();
     return this.http.delete(`${this.api_url}/delete-by-id/${id}`, { headers });
   }
 
-  getActiveUsers() {
+  getActiveUsers() : Observable<User[]> {
     const headers = this.getHeaders();
-    return this.http.get('http://localhost:8080/active/get-all', { headers });
+    return this.http.get<User[]>('http://localhost:8080/active/get-all', { headers });
   };
 
+  forgotPassword(email: any){
+    return this.http.post(`http://localhost:8080/users/forgot-password`,{email});
+  }
 }

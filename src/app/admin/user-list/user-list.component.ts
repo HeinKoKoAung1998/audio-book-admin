@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/models/user.model';
 import { SweetalertService } from 'src/app/services/sweetalert.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserListComponent implements OnInit {
 
-  usersList: any = [];
+  usersList: User[] = [];
   searchQuery: string = '';
 
   constructor(private userService: UserService,private toastr: ToastrService,private sweetService: SweetalertService) { }
@@ -45,10 +46,13 @@ export class UserListComponent implements OnInit {
       this.toastr.success('This user is updated Successfully');
       console.log(res)
       this.getAllUsers();
-    })
-    
-    
+    })    
   };
+
+  updateRoleConfirm(user_id: any){
+    this.sweetService.confirmUpdateUserRole (()=>{
+      this.updateRole(user_id);
+    })}
 
   searchUsers() {
     this.usersList = this.usersList.filter((user: any) => 
